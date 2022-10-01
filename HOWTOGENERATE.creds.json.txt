@@ -1,0 +1,9 @@
+Go to https://www.alphavantage.co/
+
+Click on "GET YOUR FREE API KEY TODAY"
+
+Fill out information, reCAPTCHA, get key, record in creds.json file
+
+Example creds.json:
+
+{"av_api_key":"W4WBXDNUIVF3L2W8"}
