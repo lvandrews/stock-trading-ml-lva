@@ -42,7 +42,10 @@ if args.verbose:
     print("Verbosity turned on")
 
 # Parse input
-input = args.input
+infile = args.input
+
+# Print input
+print("Input:", infile)
 
 quit()
 # dataset
