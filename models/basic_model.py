@@ -1,14 +1,50 @@
-import keras
-from keras.models import Model
-from keras.layers import Dense, Dropout, LSTM, Input, Activation
-from keras import optimizers
+#!/usr/bin/env python3
+
+# Script modified from tutorial here: https://towardsdatascience.com/getting-rich-quick-with-machine-learning-and-stock-market-predictions-696802da94fe
+# 2022-10-05
+
+# Program description and version
+desctext = 'basic_model.py: Basic model stock analysis based on past performance.'
+vers='basic_model.py v0.1'
+
+import time, argparse, os, sys
+#import keras
+#from keras.models import Model
+#from keras.layers import Dense, Dropout, LSTM, Input, Activation
+#from keras import optimizers
 import numpy as np
-np.random.seed(4)
-from tensorflow import set_random_seed
-set_random_seed(4)
-from util import csv_to_dataset, history_points
+#np.random.seed(4)
+#from tensorflow import set_random_seed
+#set_random_seed(4)
+#from util import csv_to_dataset, history_points
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+# Define date string, get script working directory
+date_now_notime = time.strftime("%Y-%m-%d")
+workdir = os.getcwd()
+
+# Initialize parser
+parser = argparse.ArgumentParser(description=desctext)
+parser.add_argument("-i", "--input", help="Input file (required)", type=str, metavar="", required=True)
+parser.add_argument("-v", "--version", help="show program version", action="version", version=vers)
+parser.add_argument("-V", "--verbose", help="increase output verbosity", action="store_true")
+
+# Print help if no arguments supplied
+if len(sys.argv) < 2:
+    parser.print_help()
+    sys.exit(1)
 
 
+# Read arguments from the command line and provide useful feedback
+args = parser.parse_args()
+if args.verbose:
+    print("Verbosity turned on")
+
+# Parse input
+input = args.input
+
+quit()
 # dataset
 
 ohlcv_histories, _, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset('MSFT_daily.csv')
@@ -56,8 +92,6 @@ real_mse = np.mean(np.square(unscaled_y_test - y_test_predicted))
 scaled_mse = real_mse / (np.max(unscaled_y_test) - np.min(unscaled_y_test)) * 100
 print(scaled_mse)
 
-import matplotlib.pyplot as plt
-
 plt.gcf().set_size_inches(22, 15, forward=True)
 
 start = 0
@@ -73,5 +107,4 @@ plt.legend(['Real', 'Predicted'])
 
 plt.show()
 
-from datetime import datetime
 model.save(f'basic_model.h5')
