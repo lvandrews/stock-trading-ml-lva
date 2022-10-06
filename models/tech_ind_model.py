@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import keras
 import tensorflow as tf
 from keras.models import Model
