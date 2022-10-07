@@ -18,7 +18,8 @@ date_now_notime = time.strftime("%Y-%m-%d")
 repodir = dirname(dirname(abspath(__file__)))
 datadir = os.path.join(repodir,"data")
 modeldir = os.path.join(repodir,"models")
-scriptdir = modeldir = os.path.join(repodir,"scripts")
+scriptdir = os.path.join(repodir,"scripts")
+av_creds = os.path.join(scriptdir,"creds.json")
 
 # Initialize parser
 parser = argparse.ArgumentParser(description=desctext)
@@ -49,7 +50,7 @@ print("Data type:", dtype)
 
 # Retrieve data function
 def save_dataset(symbol, time_window):
-    credentials = json.load(open('creds.json', 'r'))
+    credentials = json.load(open(av_creds, 'r'))
     api_key = credentials['av_api_key']
     print(symbol, time_window)
     ts = TimeSeries(key=api_key, output_format='pandas')
