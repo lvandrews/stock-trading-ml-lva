@@ -47,8 +47,6 @@ time_window = dtype
 print("Ticker symbol:", ticker)
 print("Data type:", dtype)
 
-print(ticker_data_filename)
-quit()
 # Retrieve data function
 def save_dataset(symbol, time_window):
     credentials = json.load(open('creds.json', 'r'))
