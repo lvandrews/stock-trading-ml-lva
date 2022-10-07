@@ -11,10 +11,14 @@ vers='retrieve_data.py v0.1'
 import argparse, sys, json, time, os, pprint
 import datetime as dt
 from alpha_vantage.timeseries import TimeSeries
+from os.path import dirname, abspath
 
 # Define date string, get script working directory
 date_now_notime = time.strftime("%Y-%m-%d")
-workdir = os.getcwd()
+repodir = dirname(dirname(abspath(__file__)))
+datadir = os.path.join(repodir,"data")
+modeldir = os.path.join(repodir,"models")
+scriptdir = modeldir = os.path.join(repodir,"scripts")
 
 # Initialize parser
 parser = argparse.ArgumentParser(description=desctext)
@@ -36,13 +40,15 @@ if args.verbose:
 # Parse inputs and set ticker to uppercase if lowercase was entered
 ticker = args.ticker.upper()
 dtype = args.data_type
-ticker_data_filename = os.path.join(f"../data/{ticker}_{date_now_notime}_{dtype}.csv")
+ticker_data_filename = os.path.join(datadir,f"{ticker}_{date_now_notime}_{dtype}.csv")
 time_window = dtype
 
 # Print important model parameters
 print("Ticker symbol:", ticker)
 print("Data type:", dtype)
 
+print(ticker_data_filename)
+quit()
 # Retrieve data function
 def save_dataset(symbol, time_window):
     credentials = json.load(open('creds.json', 'r'))
