@@ -13,7 +13,7 @@ import datetime as dt
 from alpha_vantage.timeseries import TimeSeries
 from os.path import dirname, abspath
 
-# Define date string, get script working directory
+# Define date string, repo directories, credentials
 date_now_notime = time.strftime("%Y-%m-%d")
 repodir = dirname(dirname(abspath(__file__)))
 datadir = os.path.join(repodir,"data")
