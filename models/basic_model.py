@@ -8,21 +8,25 @@ desctext = 'basic_model.py: Basic model stock analysis based on past performance
 vers='basic_model.py v0.1'
 
 import time, argparse, os, sys
-#import keras
-#from keras.models import Model
-#from keras.layers import Dense, Dropout, LSTM, Input, Activation
-#from keras import optimizers
+import keras
+from keras.models import Model
+from keras.layers import Dense, Dropout, LSTM, Input, Activation
+from keras import optimizers
 import numpy as np
-#np.random.seed(4)
+np.random.seed(4)
 #from tensorflow import set_random_seed
 #set_random_seed(4)
-#from util import csv_to_dataset, history_points
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-# Define date string, get script working directory
+# Define date string, repo directories, util.py file
 date_now_notime = time.strftime("%Y-%m-%d")
-workdir = os.getcwd()
+repodir = os.path.join("..",os.getcwd())
+#repodir = dirname(dirname(abspath(__file__)))
+datadir = os.path.join(repodir,"data")
+modeldir = os.path.join(repodir,"models")
+scriptdir = os.path.join(repodir,"scripts")
+from util import csv_to_dataset, history_points
 
 # Initialize parser
 parser = argparse.ArgumentParser(description=desctext)
@@ -47,10 +51,10 @@ infile = args.input
 # Print input
 print("Input:", infile)
 
-quit()
+
 # dataset
 
-ohlcv_histories, _, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset('MSFT_daily.csv')
+ohlcv_histories, _, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset(infile)
 
 test_split = 0.9
 n = int(ohlcv_histories.shape[0] * test_split)
