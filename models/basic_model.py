@@ -31,6 +31,7 @@ from util import csv_to_dataset, history_points
 # Initialize parser
 parser = argparse.ArgumentParser(description=desctext)
 parser.add_argument("-i", "--input", help="Input file (required)", type=str, metavar="", required=True)
+parser.add_argument("-e", "--epoch", help="ML training epochs", type=int, default=20)
 parser.add_argument("-v", "--version", help="show program version", action="version", version=vers)
 parser.add_argument("-V", "--verbose", help="increase output verbosity", action="store_true")
 
@@ -47,10 +48,10 @@ if args.verbose:
 
 # Parse input
 infile = args.input
+epoc = args.epoch
 
 # Print input
 print("Input:", infile)
-
 
 # dataset
 
@@ -84,8 +85,7 @@ output = Activation('linear', name='linear_output')(x)
 model = Model(inputs=lstm_input, outputs=output)
 adam = optimizers.Adam(lr=0.0005)
 model.compile(optimizer=adam, loss='mse')
-model.fit(x=ohlcv_train, y=y_train, batch_size=32, epochs=50, shuffle=True, validation_split=0.1)
-
+model.fit(x=ohlcv_train, y=y_train, batch_size=32, epochs=epoc, shuffle=True, validation_split=0.1)
 
 # evaluation
 
