@@ -1,5 +1,27 @@
 # Stock Trading with Machine Learning
 
+## Forked by Lela
+
+Making the following updates:
+1. Adding argparse parser to commands (in progress 2022-10-07)
+2. Organize files (done 2022-10-02)
+    ./data: Downloaded data files go here
+    ./docs: Any useful documents here
+    ./install: List of python3 packages to be install via pip
+    ./models: Machine learning models to be made available via main script
+    ./scripts: Core scripts to process the analysis of a stock
+2. Improving data retrieval
+    a. Save to data folder (done)
+    b. Tag files with date of retrieval (done)
+    c. Check if file exists to avoid unnecessary API calls
+    d. Permit alternative data sources
+3. Improve file structure
+    a. Add shebang and set executable status
+4. Add install script that chooses the correct tensorflow based on your system
+5. Add script to build credential file
+6. Add new models with additional data types
+7. Build installer that will work on Windows (Linux only for now)
+
 ## Overview
 
 A stock trading bot that uses machine learning to make price predictions.
