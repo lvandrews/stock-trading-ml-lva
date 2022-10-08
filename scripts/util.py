@@ -6,7 +6,6 @@ import numpy as np
 
 history_points = 50
 
-
 def csv_to_dataset(csv_path):
     data = pd.read_csv(csv_path)
     data = data.drop('date', axis=1)
