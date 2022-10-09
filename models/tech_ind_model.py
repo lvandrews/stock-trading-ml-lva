@@ -25,7 +25,7 @@ scriptdir = os.path.join(repodir,"scripts")
 # Initialize parser
 parser = argparse.ArgumentParser(description=desctext)
 parser.add_argument("-i", "--input", help="Input file (required)", type=str, metavar="", required=True)
-parser.add_argument("-e", "--epoch", help="ML training epochs", type=int, default=20)
+parser.add_argument("-e", "--epoch", help="ML training epochs", type=int, metavar="", default=20)
 parser.add_argument("-v", "--version", help="show program version", action="version", version=vers)
 parser.add_argument("-V", "--verbose", help="increase output verbosity", action="store_true")
 
