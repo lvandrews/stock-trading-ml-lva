@@ -8,13 +8,6 @@ desctext = 'tech_ind_model.py: Model stock analysis based on past performance us
 vers='basic_model.py v0.1'
 
 import time, argparse, os, sys
-import keras
-import tensorflow as tf
-from keras.models import Model
-from keras.layers import Dense, Dropout, LSTM, Input, Activation, concatenate
-from keras import optimizers
-import numpy as np
-np.random.seed(4)
 #from tensorflow import set_random_seed
 #set_random_seed(4)
 from util import csv_to_dataset, history_points
@@ -41,7 +34,6 @@ if len(sys.argv) < 2:
     parser.print_help()
     sys.exit(1)
 
-
 # Read arguments from the command line and provide useful feedback
 args = parser.parse_args()
 if args.verbose:
@@ -54,6 +46,16 @@ epoc = args.epoch
 # Print input
 print("Input:", infile)
 print("Epochs:", epoc)
+print("")
+
+# Load tensorflow and keras
+import keras
+import tensorflow as tf
+from keras.models import Model
+from keras.layers import Dense, Dropout, LSTM, Input, Activation, concatenate
+from keras import optimizers
+import numpy as np
+np.random.seed(4)
 
 # dataset
 

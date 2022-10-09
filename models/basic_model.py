@@ -8,12 +8,6 @@ desctext = 'basic_model.py: Basic model stock analysis based on past performance
 vers='basic_model.py v0.1'
 
 import time, argparse, os, sys
-import keras
-from keras.models import Model
-from keras.layers import Dense, Dropout, LSTM, Input, Activation
-from keras import optimizers
-import numpy as np
-np.random.seed(4)
 #from tensorflow import set_random_seed
 #set_random_seed(4)
 import matplotlib.pyplot as plt
@@ -52,6 +46,17 @@ epoc = args.epoch
 
 # Print input
 print("Input:", infile)
+print("Epochs:", epoc)
+print("")
+
+# Load tensorflow and keras
+import keras
+import tensorflow as tf
+from keras.models import Model
+from keras.layers import Dense, Dropout, LSTM, Input, Activation, concatenate
+from keras import optimizers
+import numpy as np
+np.random.seed(4)
 
 # dataset
 
