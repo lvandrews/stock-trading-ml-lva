@@ -104,7 +104,7 @@ z = Dense(1, activation="linear", name='dense_out')(z)
 # our model will accept the inputs of the two branches and
 # then output a single value
 model = Model(inputs=[lstm_branch.input, technical_indicators_branch.input], outputs=z)
-adam = optimizers.Adam(lr=0.0005)
+adam = optimizers.Adam(learning_rate=0.0005)
 model.compile(optimizer=adam, loss='mse')
 model.fit(x=[ohlcv_train, tech_ind_train], y=y_train, batch_size=32, epochs=epoc, shuffle=True, validation_split=0.1)
 
